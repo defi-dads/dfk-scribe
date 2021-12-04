@@ -43,7 +43,7 @@ export const Text = (props: TextProps) => {
 };
 
 const TextBase = styled.p`
-  color: ${(props) => props.theme.text};
+  color: white;
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   margin: 0;

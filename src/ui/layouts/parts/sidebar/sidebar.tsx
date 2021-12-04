@@ -1,50 +1,45 @@
 import styled from 'styled-components';
 import Link from 'next/link'
+import React from 'react';
 
 const StyledBar = styled.div`
-.menu{
-  background-image: linear-gradient($mainColor2, $mainColor3);
+  background-image: linear-gradient(
+    20deg,
+    ${props => props.theme.colors.mainColor2}, 
+    ${props => props.theme.colors.mainColor3}
+  );
   z-index: 2;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  // justify-content: center;
   flex: 0 0 150px;
-  // height: 100vh;
 
   transition: all 1s ease;
-  // overflow: hidden;
-  // position: sticky;
 
   &.active{
       left: 0;
   }
-  
-  ul{
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      width: 60%;
-      
-      li{
-          margin-bottom: 25px; 
-
-          a{
-              font-size: inherit;
-              color: inherit;
-              text-decoration: none;
-          }
-
-          &:hover{
-              font-weight: 500;
-          }
-      }
-  }
 }
+`
+
+const StyledUL = styled.ul`
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  width: 60%;
+`
+
+const StyledLI = styled.li`
+  margin-bottom: 25px;
+  a {
+    font-size: inherit;
+    color: inherit;
+  }
 `
 
 const SideBar = ({ isSidebarOpen, setSidebarOpen }) => {
@@ -67,25 +62,25 @@ const SideBar = ({ isSidebarOpen, setSidebarOpen }) => {
       text: "Store Settings",
       key: "3"
     },
-    {
-      className: "sideBarMenuLis",
-      href: "/test-page",
-      text: "Editable Tables",
-      key: "5"
-    }
+    // {
+    //   className: "sideBarMenuLis",
+    //   href: "/test-page",
+    //   text: "Editable Tables",
+    //   key: "5"
+    // }
   ];
 
   return (
     <StyledBar className={"menu " + (isSidebarOpen && "active")}>
-      <ul>
+      <StyledUL>
         {sideBarMenuLis.map((li) => {
           return (
-            <li className={li.className}>
+            <StyledLI className={li.className}>
               <Link href={li.href}>{li.text}</Link>
-            </li>
+            </StyledLI>
           );
         })}
-      </ul>
+      </StyledUL>
     </StyledBar>
   );
 };
