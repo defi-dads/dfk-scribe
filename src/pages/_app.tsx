@@ -5,6 +5,7 @@ import { themes } from '../ui/themes';
 import { NextComponentType, NextPageContext } from 'next';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
+import "antd/dist/antd.css";
 
 interface MyAppProps extends AppProps {
   Component: {
@@ -55,12 +56,44 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;   
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+    margin: 0;
+    min-height: 100vh;
+
+    overflow-y: hidden;
+
+    main{
+        height: 100vh;
+    }
+
+    .scrollable{
+        overflow-y: scroll;
+    }
   }
 
   #__next {
     min-height: 100vh;
+  }
+
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
   }
 `;

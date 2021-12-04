@@ -1,37 +1,53 @@
+import React from 'react';
 import styled, { useTheme } from 'styled-components';
 import DefaultLayout from '../ui/layouts/DefaultLayout';
-import { Text } from '../ui/components/Text';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUser, setUser } from '../redux/slices/userSlice';
-import React from 'react';
+
+import { PageHeader, Menu, Dropdown, Card, Table } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+
+import PaymentsTable from "../ui/components/payments/payments-table";
+import PaymentCard from "../ui/components/payments/payment-card";
+
+import axios, { AxiosError } from 'axios';
+// creating http
+//  - an http client with a baseURL and default headers for authentication and such.
+//  - why? brevity: http.get('/path')
+const http = axios.create({
+  baseURL: 'https://bpnqxl35g7.execute-api.us-east-2.amazonaws.com/dev',
+  // headers: { 
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+  // }
+});
+
+// import { Text } from '../ui/components/Text';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getUser, setUser } from '../redux/slices/userSlice';
 
 export default function Landing() {
   const theme = useTheme();
-  const dispatch = useDispatch();
-  const user = useSelector(getUser);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      dispatch(
-        setUser({
-          id: 2,
-          username: 'Kevin',
-        })
-      );
-    }, 2000);
-  });
 
   return (
     <Container>
-      <StyledText style={{ margin: '10px 0' }}>
-        You're up and running with NextJS & Redux!
-      </StyledText>
-      <p>
-        Logged in as{' '}
-        <span style={{ color: theme.primary }}>
-          {`${user.username} (id: ${user.id})`}
-        </span>
-      </p>
+      <PageHeader
+        title="Dashboard"
+        className="site-page-header"
+        subTitle="Your personal Reef adobe"
+      ></PageHeader>
+      {/* <PayStats /> */}
+      <Card
+        title="Transactions"
+        headStyle={{ color: "purple", fontWeight: 600 }}
+        bodyStyle={{}}
+      >
+        <PaymentCard />
+
+        {/* <Dropdown overlay={menu} trigger={['click']}>
+          <button>
+            Merchant <DownOutlined />
+          </button>
+        </Dropdown> */}
+      </Card>
     </Container>
   );
 }
@@ -44,9 +60,5 @@ const Container = styled.div`
   margin-bottom: 10px;
 `;
 
-const StyledText = styled(Text).attrs({
-  fontSize: 25,
-  regular: true,
-})``;
 
 Landing.Layout = DefaultLayout;
