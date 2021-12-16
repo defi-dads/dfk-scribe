@@ -75,7 +75,7 @@ const SideBar = ({ isSidebarOpen, setSidebarOpen }) => {
       <StyledUL>
         {sideBarMenuLis.map((li) => {
           return (
-            <StyledLI className={li.className}>
+            <StyledLI key={li.key} className={li.className}>
               <Link href={li.href}>{li.text}</Link>
             </StyledLI>
           );
