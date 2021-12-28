@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useGetPaymentByIdQuery } from '../../services/payment'
 
-const PaymentPendingPage = () => {
+const Account = () => {
     const router = useRouter()
     const { pid } = router.query
 
@@ -11,11 +11,7 @@ const PaymentPendingPage = () => {
 
     // use pid paymentId to getPaymentById (Web API Call)
     // see src/services for more 
-    if (true) {
-        return <p>PaymentId: {pid}</p>
-    } else {
-        return <p>PaymentId: {pid} and not loading mothafucka</p>
-    }
+    return <p>PaymentId: {pid}</p>
 }
 
-export default PaymentPendingPage
+export default Account
