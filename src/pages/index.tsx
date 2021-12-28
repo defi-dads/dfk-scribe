@@ -5,8 +5,8 @@ import DefaultLayout from '../ui/layouts/DefaultLayout';
 import { PageHeader, Menu, Dropdown, Card, Table } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
-import PaymentsTable from "../ui/components/payments/payments-table";
-import PaymentCard from "../ui/components/payments/payment-card";
+import PaymentsTable from "../ui/components/account/payments-table";
+import PaymentCard from "../ui/components/account/start-here-card";
 
 import axios, { AxiosError } from 'axios';
 // creating http
@@ -24,20 +24,23 @@ const http = axios.create({
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getUser, setUser } from '../redux/slices/userSlice';
 
+const Styled_Card = styled(Card)`
+  width: 50%
+`
+
 export default function Landing() {
   const theme = useTheme();
 
   return (
     <Container>
       <PageHeader
-        title="Dashboard"
+        title="All Kingdoms need Scribes"
         className="site-page-header"
-        subTitle="Your personal Reef adobe"
+        subTitle="Settle your earnings down to one simple report in the currency of your choice."
       ></PageHeader>
-      {/* <PayStats /> */}
-      <Card
-        title="Transactions"
-        headStyle={{ color: "purple", fontWeight: 600 }}
+      <Styled_Card
+        title="DFK Earnings Report"
+        headStyle={{ color: "#5b9645", fontWeight: 600 }}
         bodyStyle={{}}
       >
         <PaymentCard />
@@ -47,7 +50,7 @@ export default function Landing() {
             Merchant <DownOutlined />
           </button>
         </Dropdown> */}
-      </Card>
+      </Styled_Card>
     </Container>
   );
 }

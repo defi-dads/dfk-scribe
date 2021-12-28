@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { PageHeader, Menu, Dropdown, Card, Table } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import PaymentsTable from "../../ui/components/payments/payments-table";
+import PaymentsTable from "../../ui/components/account/payments-table";
 // import PayStats from "../components/dashboard/pay-stats";
-import PaymentCard from "../../ui/components/payments/payment-card";
+import PaymentCard from "../../ui/components/account/start-here-card";
 
 import axios, { AxiosError } from 'axios';
 const http = axios.create({
@@ -39,14 +39,14 @@ const Home = () => {
   return (
     <>
       <PageHeader
-        title="Dashboard"
+        title="All Kingdoms need Scribes"
         className="site-page-header"
-        subTitle="Your personal Reef adobe"
+        subTitle="Settle your earnings down to one simple report in the currency of your choice."
       ></PageHeader>
       {/* <PayStats /> */}
       <Card
-        title="Transactions"
-        headStyle={{ color: "purple", fontWeight: 600 }}
+        title="Tell your "
+        headStyle={{ color: "#5b9645", fontWeight: 600 }}
         bodyStyle={{}}
       >
         <PaymentsTable />

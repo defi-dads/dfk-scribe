@@ -8,7 +8,7 @@ export const themes = {
       footerBackground: '#f6f6f6',
       mainColor: '#fff',
       mainColor2: 'rgb(44, 2, 77)',
-      mainColor3: 'rgb(251, 62, 134)'
+      mainColor3: '#5b9645'
     }
   },
 } as const;

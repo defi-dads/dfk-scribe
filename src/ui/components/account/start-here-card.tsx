@@ -1,6 +1,8 @@
 import { Button, Card, Form, Input, Select } from "antd";
 import React, { useMemo, useCallback, useEffect, useRef } from "react";
 import { useDataChanger } from "../../../hooks/useDataChanger";
+import { currencies } from "./constants";
+import styled from "styled-components";
 // import BN from "bignumber.js";
 
 const { Option } = Select;
@@ -78,30 +80,31 @@ const PaymentCard = () => {
         form={form}
       >
         <Form.Item
-          label="Merchant"
-          name="merchant"
+          label="Choose your Currency"
+          name="currency"
           rules={[
-            { required: true, message: "Please input your USD Payment!" }
+            { required: true, message: "Earnings Report requires a currency base" }
           ]}
         >
           <Select
-            placeholder="Select a option and change input text above"
             //   onChange={onGenderChange}
             allowClear
-          >
-            <Option value="male">Wine People</Option>
-            <Option value="female">female</Option>
-            <Option value="other">other</Option>
+          > 
+          {currencies.map( v => {
+            return <Option style={{ color: "#7ca649", fontWeight: 600, textTransform: "uppercase" }} key={v.abbreviation} value={v.abbreviation}>
+              {v.display}
+            </Option>
+          })}
           </Select>
         </Form.Item>
 
-        <Form.Item label="REEF payment" name="reefPayment">
+        <Form.Item label="Account Address" name="address">
           <Input />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit" disabled>
-            Submit
+            Scribe Earnings Report
           </Button>
         </Form.Item>
       </Form>
@@ -109,4 +112,6 @@ const PaymentCard = () => {
   );
 };
 
-export default PaymentCard;
+export default styled(PaymentCard)`
+
+`;
